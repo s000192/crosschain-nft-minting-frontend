@@ -55,6 +55,7 @@ const Account = ({ triedToEagerConnect }: AccountProps) => {
                   setConnecting(false);
                 } else {
                   setError(error);
+                  console.log(error)
                 }
               });
             }}

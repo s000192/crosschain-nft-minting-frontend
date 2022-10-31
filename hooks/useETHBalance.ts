@@ -17,7 +17,7 @@ export default function useETHBalance(address: string, suspense = false) {
   const shouldFetch = typeof address === "string" && !!library;
 
   const result = useSWR(
-    shouldFetch ? ["ETHBalance", address, chainId] : null,
+    shouldFetch ? ["ETHBalance", address, 5] : null,
     getETHBalance(library),
     {
       suspense,

@@ -3,10 +3,10 @@ import Head from "next/head";
 import Link from "next/link";
 import Account from "../components/Account";
 import ETHBalance from "../components/ETHBalance";
+import NFTonPolygonBalance from '../components/NFTonPolygonBalance';
 import TokenBalance from "../components/TokenBalance";
 import useEagerConnect from "../hooks/useEagerConnect";
-
-const DAI_TOKEN_ADDRESS = "0x6b175474e89094c44da98b954eedeac495271d0f";
+import addresses from "../constants/addresses.json";
 
 function Home() {
   const { account, library } = useWeb3React();
@@ -18,35 +18,36 @@ function Home() {
   return (
     <div>
       <Head>
-        <title>next-web3-boilerplate</title>
+        <title>Crosschain NFT minting</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <header>
         <nav>
-          <Link href="/">
-            <a>next-web3-boilerplate</a>
-          </Link>
-
           <Account triedToEagerConnect={triedToEagerConnect} />
         </nav>
       </header>
 
       <main>
         <h1>
-          Welcome to{" "}
-          <a href="https://github.com/mirshko/next-web3-boilerplate">
-            next-web3-boilerplate
-          </a>
+          Crosschain NFT minting
         </h1>
 
         {isConnected && (
           <section>
             <ETHBalance />
 
-            <TokenBalance tokenAddress={DAI_TOKEN_ADDRESS} symbol="DAI" />
+            <TokenBalance tokenAddress={addresses.mockToken} symbol="MOCK" />
+            <NFTonPolygonBalance />
+
           </section>
         )}
+
+        <h3>
+          <a href="https://goerlifaucet.com/">
+            Get your Goerli ETH here
+          </a>
+        </h3>
       </main>
 
       <style jsx>{`
