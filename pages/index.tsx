@@ -50,7 +50,7 @@ function Home() {
         )}
 
         <h3>
-          4. Wait for confirmation on Polygon Mumbai Could take up to an hour.
+          4. Wait for confirmation on Polygon Mumbai. Could take up to an hour.
         </h3>
       </main>
 
