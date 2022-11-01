@@ -34,6 +34,10 @@ function Home() {
         </h1>
 
         <h3>
+          0. Switch your network to Goerli testnet
+        </h3>
+
+        <h3>
           <a href="https://goerlifaucet.com/">
             1. Get your Goerli ETH here
           </a>
