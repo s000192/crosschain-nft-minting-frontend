@@ -46,7 +46,6 @@ const NFTonPolygonBalance = () => {
         try {
           let tx = await receipt.wait();
           setReminder(`Successful transaction: https://goerli.etherscan.io/tx/${tx.transactionHash}`)
-          console.log(tx);
         } catch (err) {
           setReminder(`Transaction failed: ${err}`)
           console.log(err);
@@ -79,7 +78,6 @@ const NFTonPolygonBalance = () => {
         try {
           let tx = await receipt.wait();
           setReminder(`Successful transaction: https://goerli.etherscan.io/tx/${tx.transactionHash}. Please wait for confirmation on Polygon`)
-          console.log(tx);
         } catch (err) {
           setReminder(`Transaction failed: ${err}`)
           console.log(err);

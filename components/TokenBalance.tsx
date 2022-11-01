@@ -37,7 +37,6 @@ const TokenBalance = ({ tokenAddress, symbol }: TokenBalanceProps) => {
         try {
           let tx = await receipt.wait();
           setReminder(`Successful transaction: https://goerli.etherscan.io/tx/${tx.transactionHash}`)
-          console.log(tx);
         } catch (err) {
           setReminder(`Transaction failed: ${err}`)
           console.log(err);
