@@ -48,6 +48,10 @@ function Home() {
 
           </section>
         )}
+
+        <h3>
+          4. Wait for confirmation on Polygon Mumbai
+        </h3>
       </main>
 
       <style jsx>{`
