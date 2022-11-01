@@ -18,7 +18,7 @@ const NFTonPolygonBalance = () => {
   const [reminder, setReminder] = useState("");
   const tokenContract = useTokenContract(addresses.mockToken);
   const paymentGatewayContract = usePaymentGatewayContract();
-  const tokenAllowance = useTokenAllowance(account, addresses.paymentGateway, addresses.crossmintNft).data;
+  const tokenAllowance = useTokenAllowance(account, addresses.paymentGateway, addresses.mockToken).data;
   const isAllowanceEnough = useMemo(() =>
     // TODO: avoid hardcode
     tokenAllowance ? tokenAllowance.gte(utils.parseEther("0.1")) : false
