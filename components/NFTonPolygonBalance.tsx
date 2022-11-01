@@ -19,13 +19,11 @@ const NFTonPolygonBalance = () => {
   const tokenContract = useTokenContract(addresses.mockToken);
   const paymentGatewayContract = usePaymentGatewayContract();
   const tokenAllowance = useTokenAllowance(account, addresses.paymentGateway, addresses.crossmintNft).data;
-  console.log(tokenAllowance)
   const isAllowanceEnough = useMemo(() =>
     // TODO: avoid hardcode
     tokenAllowance ? tokenAllowance.gte(utils.parseEther("0.1")) : false
     , [tokenAllowance])
 
-  console.log(isAllowanceEnough)
 
   const approveButtonClick = async () => {
     if (account !== undefined || !loading) {
@@ -67,8 +65,9 @@ const NFTonPolygonBalance = () => {
 
       try {
         const estimatedGasLimit = await paymentGatewayContract.estimateGas.crossmint(
-          CHAIN_IDS["mumbai"],
-        );
+          CHAIN_IDS["mumbai"], {
+          value: utils.parseEther("0.0001") // TODO: avoid hardcode
+        });
         const gasPrice = await library.getGasPrice();
         let receipt = await paymentGatewayContract.crossmint(CHAIN_IDS["mumbai"], {
           gasPrice,
@@ -79,7 +78,7 @@ const NFTonPolygonBalance = () => {
 
         try {
           let tx = await receipt.wait();
-          setReminder(`Successful transaction: https://goerli.etherscan.io/tx/${tx.transactionHash}`)
+          setReminder(`Successful transaction: https://goerli.etherscan.io/tx/${tx.transactionHash}. Please wait for confirmation on Polygon`)
           console.log(tx);
         } catch (err) {
           setReminder(`Transaction failed: ${err}`)
@@ -95,18 +94,20 @@ const NFTonPolygonBalance = () => {
 
   return (
     <>
+      <h3>3. Mint NFT on Polygon with mock ERC20 tokens</h3>
+
       <p>
         {`NFT on Polygon Balance`}: {data ? data.toString() : 0}
       </p>
       <p>
         Price: 0.1 MOCK
-        <button
-          disabled={loading}
-          onClick={isAllowanceEnough ? mintButtonClick : approveButtonClick}
-        >
-          {loading ? "loading" : isAllowanceEnough ? "mint" : "approve"}
-        </button>
       </p>
+      <button
+        disabled={loading}
+        onClick={isAllowanceEnough ? mintButtonClick : approveButtonClick}
+      >
+        {loading ? "loading" : isAllowanceEnough ? "mint" : "approve"}
+      </button>
       {reminder}
     </>
   );

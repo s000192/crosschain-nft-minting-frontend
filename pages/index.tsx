@@ -33,6 +33,12 @@ function Home() {
           Crosschain NFT minting
         </h1>
 
+        <h3>
+          <a href="https://goerlifaucet.com/">
+            1. Get your Goerli ETH here
+          </a>
+        </h3>
+
         {isConnected && (
           <section>
             <ETHBalance />
@@ -42,12 +48,6 @@ function Home() {
 
           </section>
         )}
-
-        <h3>
-          <a href="https://goerlifaucet.com/">
-            Get your Goerli ETH here
-          </a>
-        </h3>
       </main>
 
       <style jsx>{`
