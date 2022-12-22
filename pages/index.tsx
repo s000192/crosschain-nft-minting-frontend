@@ -42,19 +42,28 @@ function Home() {
             1. Get your Goerli ETH here
           </a>
         </h3>
-
         {isConnected && (
           <section>
             <ETHBalance />
+          </section>
+        )}
 
+        <h3>2. Get mock ERC20 tokens for testing</h3>
+        {isConnected && (
+          <section>
             <TokenBalance tokenAddress={addresses.mockToken} symbol="MOCK" />
-            <NFTonPolygonBalance />
+          </section>
+        )}
 
+        <h3>3. Mint NFT on Polygon Mumbai with mock ERC20 tokens</h3>
+        {isConnected && (
+          <section>
+            <NFTonPolygonBalance />
           </section>
         )}
 
         <h3>
-          4. Wait for confirmation on Polygon Mumbai. Could take up to an hour.
+          4. Wait for confirmation on Polygon Mumbai.
         </h3>
       </main>
 

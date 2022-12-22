@@ -51,8 +51,6 @@ const TokenBalance = ({ tokenAddress, symbol }: TokenBalanceProps) => {
 
   return (
     <>
-      <h3>2. Get mock ERC20 tokens for testing</h3>
-
       <p>
         {`$${symbol} Balance`}: {parseBalance(data ?? 0)}
       </p>

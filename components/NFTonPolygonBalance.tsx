@@ -92,8 +92,6 @@ const NFTonPolygonBalance = () => {
 
   return (
     <>
-      <h3>3. Mint NFT on Polygon Mumbai with mock ERC20 tokens</h3>
-
       <p>
         {`NFT on Polygon Balance`}: {data ? data.toString() : 0}
       </p>
